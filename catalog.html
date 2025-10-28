@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal HUB - Catálogo</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">🏢</div>
+                <span>Portal HUB</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="catalog.html" class="nav-link active">Catálogo</a>
+                <a href="transactions.html" class="nav-link">Transações</a>
+                <a href="company-register.html" class="nav-link">Cadastrar Empresa</a>
+            </div>
+            
+            <div class="nav-user">
+                <span id="userName">Usuário</span>
+                <button onclick="logout()" class="btn-logout">Sair</button>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Catálogo de Produtos e Serviços</h1>
+                <p>Explore produtos e serviços das empresas do HUB</p>
+            </div>
+            
+            <div class="catalog-controls">
+                <div class="search-filters">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Buscar produtos ou serviços...">
+                        <button onclick="searchProducts()" class="btn-search">🔍</button>
+                    </div>
+                    
+                    <div class="filters">
+                        <select id="categoryFilter" onchange="filterProducts()">
+                            <option value="">Todas as Categorias</option>
+                            <option value="Tecnologia">Tecnologia</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Consultoria">Consultoria</option>
+                            <option value="Educação">Educação</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Financeiro">Financeiro</option>
+                            <option value="Serviços">Serviços</option>
+                        </select>
+                        
+                        <select id="priceFilter" onchange="filterProducts()">
+                            <option value="">Todos os Preços</option>
+                            <option value="0-1000">Até R$ 1.000</option>
+                            <option value="1000-5000">R$ 1.000 - R$ 5.000</option>
+                            <option value="5000-10000">R$ 5.000 - R$ 10.000</option>
+                            <option value="10000+">Acima de R$ 10.000</option>
+                        </select>
+                        
+                        <button onclick="clearFilters()" class="btn-clear">Limpar Filtros</button>
+                    </div>
+                </div>
+                
+                <button onclick="showAddProductModal()" class="btn-add-product">+ Adicionar Produto</button>
+            </div>
+            
+            <div class="catalog-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalProducts">0</span>
+                    <span class="stat-label">Produtos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalCompanies">0</span>
+                    <span class="stat-label">Empresas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="avgDiscount">0%</span>
+                    <span class="stat-label">Desconto Médio</span>
+                </div>
+            </div>
+            
+            <div id="productsGrid" class="products-grid">
+                <!-- Produtos serão carregados aqui -->
+            </div>
+            
+            <div id="noResults" class="no-results" style="display: none;">
+                <div class="no-results-icon">📦</div>
+                <h3>Nenhum produto encontrado</h3>
+                <p>Tente ajustar os filtros ou buscar por outros termos</p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Modal Adicionar Produto -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Adicionar Produto/Serviço</h2>
+                <button onclick="closeAddProductModal()" class="btn-close">×</button>
+            </div>
+            
+            <form id="productForm" class="product-form">
+                <div class="form-group">
+                    <label for="productName">Nome do Produto/Serviço *</label>
+                    <input type="text" id="productName" name="productName" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productCategory">Categoria *</label>
+                        <select id="productCategory" name="productCategory" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Tecnologia">Tecnologia</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Consultoria">Consultoria</option>
+                            <option value="Educação">Educação</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Financeiro">Financeiro</option>
+                            <option value="Serviços">Serviços</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productPrice">Preço (R$) *</label>
+                        <input type="number" id="productPrice" name="productPrice" min="0" step="0.01" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productDescription">Descrição *</label>
+                    <textarea id="productDescription" name="productDescription" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productTags">Tags (separadas por vírgula)</label>
+                    <input type="text" id="productTags" name="productTags" placeholder="Ex: software, automação, produtividade">
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" onclick="closeAddProductModal()" class="btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn-primary">Adicionar Produto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal Detalhes do Produto -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalProductName">Produto</h2>
+                <button onclick="closeProductModal()" class="btn-close">×</button>
+            </div>
+            
+            <div class="product-details">
+                <div class="product-info">
+                    <div class="product-company">
+                        <strong>Empresa:</strong> <span id="modalCompanyName"></span>
+                    </div>
+                    <div class="product-category">
+                        <strong>Categoria:</strong> <span id="modalProductCategory"></span>
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price" id="modalOriginalPrice"></span>
+                        <span class="final-price" id="modalFinalPrice"></span>
+                        <span class="discount-badge" id="modalDiscount"></span>
+                    </div>
+                </div>
+                
+                <div class="product-description">
+                    <h4>Descrição</h4>
+                    <p id="modalProductDescription"></p>
+                </div>
+                
+                <div class="product-tags" id="modalProductTags">
+                    <!-- Tags serão inseridas aqui -->
+                </div>
+                
+                <div class="modal-actions">
+                    <button onclick="closeProductModal()" class="btn-secondary">Fechar</button>
+                    <button onclick="buyProduct()" class="btn-primary">Comprar Agora</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/catalog.js"></script>
+</body>
+</html>

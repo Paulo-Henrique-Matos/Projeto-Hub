@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal HUB - Painel Administrativo</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">⚙️</div>
+                <span>Portal HUB - Admin</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#companies" class="nav-link active" onclick="showTab('companies')">Empresas</a>
+                <a href="#products" class="nav-link" onclick="showTab('products')">Produtos</a>
+                <a href="#discounts" class="nav-link" onclick="showTab('discounts')">Descontos</a>
+                <a href="#reports" class="nav-link" onclick="showTab('reports')">Relatórios</a>
+            </div>
+            
+            <div class="nav-user">
+                <span>Administrador</span>
+                <button onclick="adminLogout()" class="btn-logout">Sair</button>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Painel Administrativo</h1>
+                <p>Gerencie empresas, produtos e monitore o portal</p>
+            </div>
+            
+            <!-- Tab: Empresas -->
+            <div id="companies" class="tab-content active">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Empresas Pendentes de Aprovação</h2>
+                        <span class="badge" id="pendingCompaniesCount">0</span>
+                    </div>
+                    <div class="card-content">
+                        <div id="pendingCompaniesList" class="approval-list">
+                            <!-- Empresas pendentes serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Empresas Aprovadas</h2>
+                        <span class="badge" id="approvedCompaniesCount">0</span>
+                    </div>
+                    <div class="card-content">
+                        <div id="approvedCompaniesList" class="companies-grid">
+                            <!-- Empresas aprovadas serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab: Produtos -->
+            <div id="products" class="tab-content">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Produtos Pendentes de Aprovação</h2>
+                        <span class="badge" id="pendingProductsCount">0</span>
+                    </div>
+                    <div class="card-content">
+                        <div id="pendingProductsList" class="approval-list">
+                            <!-- Produtos pendentes serão carregados aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab: Descontos -->
+            <div id="discounts" class="tab-content">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Gerenciar Descontos para Empresas do HUB</h2>
+                    </div>
+                    <div class="card-content">
+                        <div id="discountsList" class="discounts-grid">
+                            <!-- Lista de produtos para aplicar descontos -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab: Relatórios -->
+            <div id="reports" class="tab-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🏢</div>
+                        <div class="stat-content">
+                            <h3 id="totalCompaniesReport">0</h3>
+                            <p>Total de Empresas</p>
+                            <span class="stat-change">+5 este mês</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-content">
+                            <h3 id="totalProductsReport">0</h3>
+                            <p>Produtos/Serviços</p>
+                            <span class="stat-change">+12 este mês</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <h3 id="totalVolumeReport">R$ 0</h3>
+                            <p>Volume de Negócios</p>
+                            <span class="stat-change">+18% este mês</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Extrato de Transações</h2>
+                        <button onclick="exportTransactions()" class="btn-export">Exportar</button>
+                    </div>
+                    <div class="card-content">
+                        <div id="transactionsList" class="transactions-list">
+                            <!-- Transações serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

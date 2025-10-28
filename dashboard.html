@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal HUB - Dashboard</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">🏢</div>
+                <span>Portal HUB</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="catalog.html" class="nav-link">Catálogo</a>
+                <a href="transactions.html" class="nav-link">Transações</a>
+                <a href="company-register.html" class="nav-link">Cadastrar Empresa</a>
+            </div>
+            
+            <div class="nav-user">
+                <span id="userName">Usuário</span>
+                <button onclick="logout()" class="btn-logout">Sair</button>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Dashboard</h1>
+                <p>Visão geral do Portal HUB</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏢</div>
+                    <div class="stat-content">
+                        <h3 id="totalCompanies">0</h3>
+                        <p>Empresas Ativas</p>
+                        <span class="stat-change">+12%</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-content">
+                        <h3 id="totalProducts">0</h3>
+                        <p>Produtos/Serviços</p>
+                        <span class="stat-change">+8%</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🛒</div>
+                    <div class="stat-content">
+                        <h3 id="totalTransactions">0</h3>
+                        <p>Transações</p>
+                        <span class="stat-change">+23%</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                        <h3 id="totalRevenue">R$ 0</h3>
+                        <p>Receita Total</p>
+                        <span class="stat-change">+15%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2>Transações Recentes</h2>
+                        <span class="card-icon">📈</span>
+                    </div>
+                    <div class="card-content">
+                        <div id="recentTransactions" class="transactions-list">
+                            <!-- Transações serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2>Empresas em Destaque</h2>
+                        <span class="card-icon">🏆</span>
+                    </div>
+                    <div class="card-content">
+                        <div id="topCompanies" class="companies-list">
+                            <!-- Empresas serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-actions">
+                <h2>Ações Rápidas</h2>
+                <div class="actions-grid">
+                    <button onclick="location.href='company-register.html'" class="action-btn">
+                        <span class="action-icon">🏢</span>
+                        <span>Cadastrar Empresa</span>
+                    </button>
+                    <button onclick="location.href='catalog.html'" class="action-btn">
+                        <span class="action-icon">📦</span>
+                        <span>Ver Catálogo</span>
+                    </button>
+                    <button onclick="location.href='transactions.html'" class="action-btn">
+                        <span class="action-icon">📊</span>
+                        <span>Ver Relatórios</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

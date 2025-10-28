@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal HUB - Cadastrar Empresa</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/company-register.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">🏢</div>
+                <span>Portal HUB</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="catalog.html" class="nav-link">Catálogo</a>
+                <a href="transactions.html" class="nav-link">Transações</a>
+                <a href="company-register.html" class="nav-link active">Cadastrar Empresa</a>
+            </div>
+            
+            <div class="nav-user">
+                <span id="userName">Usuário</span>
+                <button onclick="logout()" class="btn-logout">Sair</button>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Cadastrar Nova Empresa</h1>
+                <p>Adicione uma nova empresa ao Portal HUB</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="companyForm" class="company-form">
+                    <div class="form-section">
+                        <h3>Dados da Empresa</h3>
+                        
+                        <div class="form-group">
+                            <label for="companyName">Nome da Empresa *</label>
+                            <input type="text" id="companyName" name="companyName" placeholder="Digite o nome da empresa" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cnpj">CNPJ *</label>
+                                <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="area">Área de Atuação *</label>
+                                <select id="area" name="area" required>
+                                    <option value="">Selecione uma área</option>
+                                    <option value="Tecnologia">Tecnologia</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Consultoria">Consultoria</option>
+                                    <option value="Educação">Educação</option>
+                                    <option value="Saúde">Saúde</option>
+                                    <option value="Financeiro">Financeiro</option>
+                                    <option value="Varejo">Varejo</option>
+                                    <option value="Indústria">Indústria</option>
+                                    <option value="Serviços">Serviços</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="url" id="website" name="website" placeholder="https://www.empresa.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Descrição da Empresa *</label>
+                            <textarea id="description" name="description" placeholder="Descreva os principais produtos e serviços da empresa..." required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Representante</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="representativeName">Nome Completo *</label>
+                                <input type="text" id="representativeName" name="representativeName" placeholder="Nome do representante" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="position">Cargo</label>
+                                <input type="text" id="position" name="position" placeholder="Ex: Diretor, Gerente">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-mail Corporativo *</label>
+                                <input type="email" id="email" name="email" placeholder="contato@empresa.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Telefone de Contato *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Endereço</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cep">CEP</label>
+                                <input type="text" id="cep" name="cep" placeholder="00000-000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="city">Cidade</label>
+                                <input type="text" id="city" name="city" placeholder="São Paulo">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="state">Estado</label>
+                                <select id="state" name="state">
+                                    <option value="">Selecione</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Endereço Completo</label>
+                            <input type="text" id="address" name="address" placeholder="Rua, número, bairro">
+                        </div>
+                    </div>
+                    
+                    <div id="errorMessage" class="error-message"></div>
+                    <div id="successMessage" class="success-message"></div>
+                    
+                    <div class="form-actions">
+                        <button type="button" onclick="clearForm()" class="btn-secondary">Limpar</button>
+                        <button type="submit" class="btn-primary">Cadastrar Empresa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <script src="js/company-register.js"></script>
+</body>
+</html>

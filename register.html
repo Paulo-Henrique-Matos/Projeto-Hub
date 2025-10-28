@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal HUB - Cadastro</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-form">
+            <div class="logo">
+                <div class="logo-icon">🏢</div>
+                <h1>Cadastro de Empresa</h1>
+                <p>Registre sua empresa no Portal HUB</p>
+            </div>
+            
+            <form id="registerForm">
+                <div class="form-section">
+                    <h3>Dados da Empresa</h3>
+                    
+                    <div class="form-group">
+                        <label for="companyName">Nome da Empresa *</label>
+                        <input type="text" id="companyName" name="companyName" placeholder="Digite o nome da empresa" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cnpj">CNPJ *</label>
+                        <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="area">Área de Atuação *</label>
+                        <input type="text" id="area" name="area" placeholder="Ex: Tecnologia, Marketing, Consultoria" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="url" id="website" name="website" placeholder="https://www.empresa.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Descrição da Empresa *</label>
+                        <textarea id="description" name="description" placeholder="Descreva os principais produtos e serviços da sua empresa..." required></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Representante</h3>
+                    
+                    <div class="form-group">
+                        <label for="representativeName">Nome Completo *</label>
+                        <input type="text" id="representativeName" name="representativeName" placeholder="Nome do representante" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail Corporativo *</label>
+                        <input type="email" id="email" name="email" placeholder="contato@empresa.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone de Contato *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Senha de Acesso</h3>
+                    
+                    <div class="form-group">
+                        <label for="password">Criar Senha *</label>
+                        <input type="password" id="password" name="password" placeholder="Mínimo 6 caracteres" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Senha *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme sua senha" required>
+                    </div>
+                </div>
+                
+                <div class="alert-info">
+                    <strong>Importante:</strong> Após o cadastro, sua empresa passará por um processo de aprovação. 
+                    Você será notificado quando a aprovação for concluída.
+                </div>
+                
+                <div id="errorMessage" class="error-message"></div>
+                
+                <button type="submit" class="btn-primary">Cadastrar Empresa</button>
+                
+                <div class="form-footer">
+                    <p>Já tem uma conta? <a href="index.html">Fazer login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/register.js"></script>
+</body>
+</html>
